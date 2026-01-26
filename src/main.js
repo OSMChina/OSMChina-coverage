@@ -55,6 +55,24 @@ function getRadius(score, zoom) {
     return base * (zoom - 3) / 2;
 }
 
+function updateSidePanel(p) {
+  const panel = document.getElementById('panel-content');
+
+  panel.innerHTML = `
+    <h2>${p.addr2 || ''}${p.addr3 || ''}${p.addr4 || ''}</h2>
+    <a href="https://www.openstreetmap.org/relation/${p.boundary}" target="_blank">
+      查看边界
+    </a>
+    ｜ 
+    <a href="https://www.openstreetmap.org/node/${p.node}" target="_blank">
+      查看节点
+    </a><br/><br/>
+    总分：<b>${p.score}</b>
+
+  `;
+}
+
+
 const markers = [];
 
 loadAllCsvPoints().then(points => {
@@ -74,7 +92,9 @@ loadAllCsvPoints().then(points => {
           <b>${p.addr2}${p.addr3}${p.addr4}</b><br/>   
           得分：<b>${p.score}</b><br/>   
           <a href="https://www.openstreetmap.org/relation/${p.boundary}" target="_blank">查看边界</a>｜<a href="https://www.openstreetmap.org/node/${p.node}" target="_blank">查看节点</a>
-        `);
+        `).on('click', () => {
+          updateSidePanel(p);
+        });;
 
             markers.push({ marker, score: p.score });
         });
