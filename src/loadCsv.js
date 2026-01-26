@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 export async function loadAllCsvPoints() {
     // 1. Load file list
     const filesRes = await fetch(
-        '/provinceList.json'
+        '/OSMChina-coverage/provinceList.json'
     );
     const provinces = await filesRes.json();
 
@@ -12,7 +12,7 @@ export async function loadAllCsvPoints() {
 
     const requests = provinces.map(async province => {
         const res = await fetch(
-            `/data/China_Report_2025/data/feature_comprehensiveness_statistics_${province}.csv`
+            `/OSMChina-coverage/data/China_Report_2025/data/feature_comprehensiveness_statistics_${province}.csv`
         );
 
         const csvText = await res.text();
