@@ -68,7 +68,14 @@ function updateSidePanel(p) {
       查看节点
     </a><br/><br/>
     总分：<b>${p.score}</b>
-
+    <br/>
+    <br/>
+    行政节点和边界：${p.score_1} / 20<br/>
+    道路交通：${p.score_2} / 30<br/>
+    公共和商业设施：${p.score_3} / 30<br/>
+    建筑和土地利用：${p.score_4} / 20
+    <br/>
+    <p>数据来源：<a href="https://www.openstreetmap.org/user/Higashimado/diary/407990" target="_blank" rel="noopener noreferrer">2025 年中国大陆乡镇 OSM 要素完备度分析报告</a></p>
   `;
 }
 

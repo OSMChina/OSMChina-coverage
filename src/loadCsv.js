@@ -1,9 +1,11 @@
 import Papa from 'papaparse';
 
+const base = import.meta.env.BASE_URL;
+
 export async function loadAllCsvPoints() {
     // 1. Load file list
     const filesRes = await fetch(
-        '/OSMChina-coverage/provinceList.json'
+        `${base}provinceList.json`
     );
     const provinces = await filesRes.json();
 
@@ -12,7 +14,7 @@ export async function loadAllCsvPoints() {
 
     const requests = provinces.map(async province => {
         const res = await fetch(
-            `/OSMChina-coverage/data/China_Report_2025/data/feature_comprehensiveness_statistics_${province}.csv`
+            `${base}data/China_Report_2025/data/feature_comprehensiveness_statistics_${province}.csv`
         );
 
         const csvText = await res.text();
@@ -35,6 +37,10 @@ export async function loadAllCsvPoints() {
                 addr4: row.addr_4,
                 boundary: row.boundary,
                 node: row.node,
+                score_1: row.score_1,
+                score_2: row.score_2,
+                score_3: row.score_3,
+                score_4: row.score_4,
             }));
     });
 
