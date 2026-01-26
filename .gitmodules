@@ -1,0 +1,3 @@
+[submodule "public/data"]
+	path = public/data
+	url = https://github.com/Higashimado/OSM_Feature_Comprehensiveness_Analysis.git
