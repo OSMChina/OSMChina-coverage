@@ -160,3 +160,7 @@ a {
   color: #0645ad;
   text-decoration: none;
 }
+
+.warning {
+  color: #d9534f;
+}

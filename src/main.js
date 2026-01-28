@@ -55,18 +55,30 @@ function getRadius(score, zoom) {
     return base * (zoom - 3) / 2;
 }
 
+function renderBoundaryLink(boundary) {
+    if (Number(boundary) === -1) {
+        return '<span class="warning">边界不存在</span>';
+    }
+
+    return `<a href="https://www.openstreetmap.org/relation/${boundary}" target="_blank">查看边界</a>`;
+}
+
+function renderNodeLink(node) {
+    if (Number(node) === -1) {
+        return '<span class="warning">节点不存在</span>';
+    }
+
+    return `<a href="https://www.openstreetmap.org/node/${node}" target="_blank">查看节点</a>`;
+}
+
 function updateSidePanel(p) {
   const panel = document.getElementById('panel-content');
 
   panel.innerHTML = `
     <h2>${p.addr2 || ''}${p.addr3 || ''}${p.addr4 || ''}</h2>
-    <a href="https://www.openstreetmap.org/relation/${p.boundary}" target="_blank">
-      查看边界
-    </a>
-    ｜ 
-    <a href="https://www.openstreetmap.org/node/${p.node}" target="_blank">
-      查看节点
-    </a><br/><br/>
+        ${renderBoundaryLink(p.boundary)}
+        ｜ 
+        ${renderNodeLink(p.node)}<br/><br/>
     总分：<b>${p.score}</b>
     <br/>
     <br/>
@@ -182,7 +194,7 @@ loadAllCsvPoints().then(points => {
                 .bindPopup(`
           <b>${p.addr2}${p.addr3}${p.addr4}</b><br/>   
           得分：<b>${p.score}</b><br/>   
-          <a href="https://www.openstreetmap.org/relation/${p.boundary}" target="_blank">查看边界</a>｜<a href="https://www.openstreetmap.org/node/${p.node}" target="_blank">查看节点</a>
+                    ${renderBoundaryLink(p.boundary)}｜${renderNodeLink(p.node)}
         `).on('click', () => {
           updateSidePanel(p);
         });
