@@ -71,6 +71,10 @@ function renderNodeLink(node) {
     return `<a href="https://www.openstreetmap.org/node/${node}" target="_blank">查看节点</a>`;
 }
 
+function renderLatLonLink(lat, lon) {
+    return `<a href="https://www.openstreetmap.org/?mlat=${lat}&mlon=${lon}#map=13/${lat}/${lon}" target="_blank">OSM坐标</a>`;
+}
+
 function updateSidePanel(p) {
   const panel = document.getElementById('panel-content');
 
@@ -78,8 +82,11 @@ function updateSidePanel(p) {
     <h2>${p.addr2 || ''}${p.addr3 || ''}${p.addr4 || ''}</h2>
         ${renderBoundaryLink(p.boundary)}
         ｜ 
-        ${renderNodeLink(p.node)}<br/><br/>
-    总分：<b>${p.score}</b>
+        ${renderNodeLink(p.node)}
+        ｜
+        ${renderLatLonLink(p.lat, p.lon)}
+        <br/><br/>
+            总分：<b>${p.score}</b>
     <br/>
     <br/>
     行政节点和边界：${p.score_1} / 20<br/>
@@ -194,7 +201,7 @@ loadAllCsvPoints().then(points => {
                 .bindPopup(`
           <b>${p.addr2}${p.addr3}${p.addr4}</b><br/>   
           得分：<b>${p.score}</b><br/>   
-                    ${renderBoundaryLink(p.boundary)}｜${renderNodeLink(p.node)}
+                    ${renderBoundaryLink(p.boundary)}｜${renderNodeLink(p.node)}｜${renderLatLonLink(p.lat, p.lon)}
         `).on('click', () => {
           updateSidePanel(p);
         });
