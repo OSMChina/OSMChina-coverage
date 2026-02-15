@@ -52,3 +52,25 @@ export async function loadAllCsvPoints() {
 
     return allPoints;
 }
+
+export async function normalizeAddresses(points) {
+
+    const badAddr2 = new Set([
+        "市辖区",
+        "市辖县",
+    ]);
+
+    const nanAddr2 = new Set([
+        "省直辖县级行政区划",
+    ]);
+
+    points.forEach(p => {
+        if (p.addr2) {
+            if (badAddr2.has(p.addr2.trim())) {
+                p.addr2 = p.addr1;
+            } else if (nanAddr2.has(p.addr2.trim())) {
+                p.addr2 = "";
+            }
+        }
+    });
+}

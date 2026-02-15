@@ -1,57 +1,58 @@
 html, body {
   margin: 0;
   height: 100%;
-  font-family: "Noto Sans SC", sans-serif;
+  font-family: "Noto Sans SC", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
 }
 
 #app {
-  display: flex;
-  flex-direction: row;
+  position: relative;
   height: 100vh;
   width: 100vw;
 }
 
 /* Side panel */
 #side-panel {
-  width: 30%;
-  background: #ffffff;
-  border-right: 1px solid #ddd;
-  border-top: none;
-  padding: 16px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+
+  width: 340px;
+  max-width: 90vw;
+  max-height: 80vh;
+
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 16px;
+  padding: 20px;
   box-sizing: border-box;
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+
   overflow-y: auto;
-  font-size: 14px;
-  order: 0;
+  z-index: 600;
+
+  backdrop-filter: blur(6px);
 }
 
 /* Map */
 #map {
-  flex: 1;
-  order: 1
-  
+  position: absolute;
+  inset: 0;
 }
 
 /* mobile adjustments */
 @media (max-width: 768px) {
   #side-panel {
-    width: 100%;
-    height: 40%;
-    border-right: none;
-    border-top: 1px solid #ddd;
-    order: 1;
-  }
-  #app {
-    flex-direction: column;
-  }
-  #map {
-    order: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92vw;
+    max-height: 60vh;
   }
 }
 
 #side-panel b {
   font-size: 16px;
 }
-
 
 /* Range panel */
 #range-panel {
@@ -65,7 +66,7 @@ html, body {
   border-radius: 10px;
   padding: 12px 14px;
   box-sizing: border-box;
-  overflow: hidden;
+  overflow-y: auto;
   font-size: 13px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   z-index: 500;
@@ -176,6 +177,27 @@ html, body {
 
 .thumb-active {
   z-index: 4;
+}
+
+.filter-section {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.checkbox-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 12px;
+  margin-top: 10px;
+}
+
+.checkbox-item {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
 }
 
 a {
