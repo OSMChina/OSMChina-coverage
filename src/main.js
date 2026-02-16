@@ -99,7 +99,11 @@ function getCheckboxFilters() {
         noNode: document.getElementById('filter-no-node').checked,
         noBoundary: document.getElementById('filter-no-boundary').checked,
         noRoad: document.getElementById('filter-no-road').checked,
-        noBuilding: document.getElementById('filter-no-building').checked
+        noBuilding: document.getElementById('filter-no-building').checked,
+        noGov: document.getElementById('filter-no-gov').checked,
+        noShop: document.getElementById('filter-no-shop').checked,
+        noSchool: document.getElementById('filter-no-school').checked,
+        noHealth: document.getElementById('filter-no-health').checked,
     };
 }
 
@@ -158,9 +162,12 @@ function matchesFilters(p, filters, checkboxFilters) {
 
     if (checkboxFilters.noNode && Number(p.node) !== -1) return false;
     if (checkboxFilters.noBoundary && Number(p.boundary) !== -1) return false;
-
     if (checkboxFilters.noRoad && p.score_2 > 0) return false;
-    if (checkboxFilters.noBuilding && p.score_4 > 0) return false;
+    if (checkboxFilters.noGov && p.n_gov > 0) return false;
+    if (checkboxFilters.noShop && p.n_shp > 0) return false;
+    if (checkboxFilters.noBuilding && p.n_bld > 0) return false;
+    if (checkboxFilters.noSchool && p.n_sch > 0) return false;
+    if (checkboxFilters.noHealth && p.n_hlt > 0) return false;
 
     return true;
 }
@@ -202,7 +209,11 @@ function bindFilterEvents() {
     ['filter-no-node',
         'filter-no-boundary',
         'filter-no-road',
-        'filter-no-building'
+        'filter-no-building',
+        'filter-no-gov',
+        'filter-no-shop',
+        'filter-no-school',
+        'filter-no-health'
     ].forEach(id => {
         document.getElementById(id).addEventListener('change', applyFilters);
     });
