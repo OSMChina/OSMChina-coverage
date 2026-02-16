@@ -22,11 +22,12 @@ function fmt1(value) {
 function getColor(score) {
 
     const stops = [
-        { s: 0, r: 180, g: 0, b: 0 },    // 暗红 rgb(180, 0, 0)
-        { s: 20, r: 255, g: 100, b: 0 }, // 橙色 rgb(255, 100, 0) 
-        { s: 40, r: 200, g: 160, b: 0 }, // 琥珀 rgb(200, 160, 0) 
-        { s: 60, r: 40, g: 140, b: 40 }, // 翠绿 rgb(40, 140, 40) 
-        { s: 100, r: 0, g: 80, b: 200 }  // 亮蓝 rgb(0, 80, 200) 
+        { s: 0, r: 150, g: 40, b: 30 },   // 红 rgb(150, 40, 30)
+        { s: 20, r: 210, g: 50, b: 40 },  // 红 rgb(210, 50, 40)
+        { s: 50, r: 240, g: 180, b: 20 }, // 黄 rgb(240, 180, 20) 
+        { s: 80, r: 40, g: 140, b: 40 },  // 绿 rgb(40, 140, 40) 
+        { s: 90, r: 30, g: 110, b: 220 }, // 蓝 rgb(30, 110, 220) 
+        { s: 100, r: 0, g: 80, b: 200 }   // 蓝 rgb(0, 80, 200) 
     ];
 
     let c1, c2;
@@ -47,8 +48,8 @@ function getColor(score) {
 }
 
 function getRadius(score, zoom) {
-    const base = 2.7;
-    return base * (zoom - 3) / 2;
+    const base = 4;
+    return base * (zoom - 3) / 3;
 }
 
 function renderBoundaryLink(boundary) {
