@@ -35,13 +35,52 @@ export async function loadAllCsvPoints() {
                 addr2: row.addr_2,
                 addr3: row.addr_3,
                 addr4: row.addr_4,
-                n_gov: row.amenity_gov_3km,
-                n_sch: row.amenity_school_1km,
-                n_hlt: row.amenity_health_1km,
-                n_shp: row.amenity_shop_1km,
-                n_bld: row.buildings_total_3km,
+                
                 boundary: row.boundary,
                 node: row.node,
+                n_place_1km: row.places_total_1km,
+                n_place_3km: row.places_total_3km,
+
+                n_road_tru_3km: row.road_trunk_3km,
+                n_road_pri_3km: row.road_primary_3km,
+                n_road_sec_3km: row.road_secondary_3km,
+                n_road_ter_3km: row.road_tertiary_3km,
+                n_road_res_3km: row.road_res_uncl_3km,
+                n_bus_3km: row.road_bus_stop_3km,
+                n_prk_3km: row.road_parking_3km,
+                n_ful_3km: row.road_fuel_3km,
+                n_road_typ_3km: row.road_types_3km,
+                n_road_tru_1km: row.road_trunk_1km,
+                n_road_pri_1km: row.road_primary_1km,
+                n_road_sec_1km: row.road_secondary_1km,
+                n_road_ter_1km: row.road_tertiary_1km,
+                n_road_res_1km: row.road_res_uncl_1km,
+                n_bus_1km: row.road_bus_stop_1km,
+                n_prk_1km: row.road_parking_1km,
+                n_ful_1km: row.road_fuel_1km,
+                n_road_typ_1km: row.road_types_1km,
+
+                n_gov_3km: row.amenity_gov_3km,
+                n_hlt_3km: row.amenity_health_3km,
+                n_sch_3km: row.amenity_school_3km,
+                n_plc_3km: row.amenity_police_3km,
+                n_pst_3km: row.amenity_post_3km,
+                n_bnk_3km: row.amenity_bank_3km,
+                n_shp_3km: row.amenity_shop_3km,
+
+                n_gov_1km: row.amenity_gov_1km,
+                n_hlt_1km: row.amenity_health_1km,
+                n_sch_1km: row.amenity_school_1km,
+                n_plc_1km: row.amenity_police_1km,
+                n_pst_1km: row.amenity_post_1km,
+                n_bnk_1km: row.amenity_bank_1km,
+                n_shp_1km: row.amenity_shop_1km,
+
+                n_bul_3km: row.buildings_total_3km,
+                n_land_typ_3km: row.landuse_types_3km,
+                n_bul_1km: row.buildings_total_1km,
+                n_land_typ_1km: row.landuse_types_1km,
+
                 score_1: row.score_1,
                 score_2: row.score_2,
                 score_3: row.score_3,
@@ -76,6 +115,9 @@ export async function normalizeAddresses(points) {
             } else if (nanAddr2.has(p.addr2.trim())) {
                 p.addr2 = "";
             }
+        }
+        if (p.addr3 == p.addr4) {
+            p.addr4 = "";
         }
     });
 }

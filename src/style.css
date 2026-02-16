@@ -208,3 +208,76 @@ a {
 .warning {
   color: #d9534f;
 }
+
+.score-section {
+  margin-bottom: 8px;
+  border-radius: 6px;
+}
+
+.score-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 4px 0;
+  user-select: none;
+}
+
+.score-header-static {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 4px 0;
+  user-select: none;
+}
+
+.score-header:hover {
+  color: #3264fe;
+}
+
+.score-arrow {
+  display: inline-block;
+  transition: transform 0.2s ease;
+  font-size: 12px;
+  color: #666;
+}
+
+.score-section.expanded .score-arrow {
+  transform: rotate(90deg);
+}
+
+.score-content {
+  display: none;
+  margin-top: 6px;
+  padding-left: 18px;
+}
+
+.score-section.expanded .score-content {
+  display: block;
+}
+
+.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.score-table th,
+.score-table td {
+  padding: 4px 6px;
+  text-align: right;
+  border-bottom: 1px solid #eee;
+}
+
+.score-table th:first-child,
+.score-table td:first-child {
+  text-align: left;
+}
+
+.score-table th {
+  font-weight: 600;
+  color: #444;
+}
