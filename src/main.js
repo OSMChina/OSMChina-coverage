@@ -348,6 +348,13 @@ function renderScore4Table(p) {
   `;
 }
 
+function updateColorPointer(score) {
+  const pointer = document.getElementById("color-pointer");
+  if (!pointer) return;
+  const clamped = Math.max(0, Math.min(100, score));
+  pointer.style.left = `${clamped}%`;
+}
+
 function bindAccordion() {
   document.querySelectorAll('.score-header').forEach(header => {
     header.addEventListener('click', () => {
@@ -409,6 +416,8 @@ function updateSidePanel(p) {
   `;
 
   bindAccordion();
+
+  updateColorPointer(p.score);
 }
 
 function getCheckboxFilters() {

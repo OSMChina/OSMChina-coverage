@@ -209,6 +209,8 @@ a {
   color: #d9534f;
 }
 
+
+/* Score table */
 .score-section {
   margin-bottom: 8px;
   border-radius: 6px;
@@ -280,4 +282,58 @@ a {
 .score-table th {
   font-weight: 600;
   color: #444;
+}
+
+/* Color legend */
+.color-legend {
+  margin-top: 20px;
+}
+
+.colorbar {
+  position: relative;
+  height: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+
+  background: linear-gradient(
+    to right,
+    rgb(150,40,30) 0%,
+    rgb(210,50,40) 20%,
+    rgb(240,180,20) 50%,
+    rgb(40,140,40) 80%,
+    rgb(30,110,220) 90%,
+    rgb(0,80,200) 100%
+  );
+}
+
+.color-pointer {
+  position: absolute;
+  top: -10px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  transition: left 0.3s ease;
+}
+
+.pointer-triangle {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 10px solid black;
+}
+
+.pointer-line {
+  width: 2px;
+  height: 18px;
+  background: black;
+}
+
+.colorbar-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 4px;
 }

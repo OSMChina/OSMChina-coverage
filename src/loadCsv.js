@@ -116,6 +116,9 @@ export async function normalizeAddresses(points) {
                 p.addr2 = "";
             }
         }
+        if (p.addr2 == p.addr3) {
+            p.addr3 = "";
+        }
         if (p.addr3 == p.addr4) {
             p.addr4 = "";
         }
