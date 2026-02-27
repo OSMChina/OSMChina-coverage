@@ -5,7 +5,13 @@ import './style.css';
 import { loadAllCsvPoints, normalizeAddresses } from './loadCsv';
 
 // Map
-const map = L.map('map').setView([35.0, 105.0], 5);
+const map = L.map('map', {
+    attributionControl: false
+}).setView([35.0, 105.0], 5);
+
+L.control.attribution({
+    prefix: '<a href="https://leafletjs.com/">Leaflet</a>'
+}).addTo(map);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors'
